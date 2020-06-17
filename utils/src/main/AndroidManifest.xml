@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ng.softcom.android.utils">
+
+    <application>
+        <activity android:theme="@style/Theme.AppCompat" android:name=".test.TestActivity"/>
+    </application>
+
+</manifest>
