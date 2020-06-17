@@ -1,13 +1,16 @@
 plugins {
     id("commons.android-library")
+    id(PluginDependencies.ANDROID_MAVEN)
 }
+
+group = "com.github.softcomlab"
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(AndroidXDependencies.appCompat)
     implementation(AndroidXDependencies.coreKtx)
     implementation(AndroidXDependencies.lifecycle)
-    annotationProcessor(AndroidXDependencies.lifecycleCompiler)
+    kapt(AndroidXDependencies.lifecycleCompiler)
 
     implementation(NetworkDependencies.retrofit)
 

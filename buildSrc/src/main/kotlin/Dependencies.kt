@@ -1,6 +1,8 @@
 @file:Suppress("KDocMissingDocumentation")
 
 object PluginDependencies {
+    const val ANDROID_MAVEN = "com.github.dcendents.android-maven"
+
     const val SPOTLESS = "plugins.spotless"
 }
 
@@ -67,11 +69,13 @@ object TestingDependencies {
 object ClasspathDependencies {
 
     object Versions {
+        const val androidMaven = "2.1"
         const val gradle = "4.0.0"
         const val spotless = "4.3.0"
     }
 
     const val allopen = "org.jetbrains.kotlin:kotlin-allopen:${RootDependencies.Versions.kotlin}"
+    const val androidMaven = "com.github.dcendents:android-maven-gradle-plugin:${Versions.androidMaven}"
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val spotless = "com.diffplug.spotless:spotless-plugin-gradle:${Versions.spotless}"
 }

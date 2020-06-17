@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath(kotlin("gradle-plugin", RootDependencies.Versions.kotlin))
         classpath(ClasspathDependencies.allopen)
+        classpath(ClasspathDependencies.androidMaven)
         classpath(ClasspathDependencies.gradle)
         classpath(ClasspathDependencies.spotless)
     }
