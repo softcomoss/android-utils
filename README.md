@@ -27,6 +27,10 @@ dependencies {
 }
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](https://github.com/softcomoss/android-utils/blob/master/CONTRIBUTING.md) for contributing guidelines
+
 ## TODO
 
 - Add more utility functions
