@@ -3,7 +3,7 @@ plugins {
     id(PluginDependencies.ANDROID_MAVEN)
 }
 
-group = "com.github.softcomlab"
+group = "com.github.softcomoss"
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
