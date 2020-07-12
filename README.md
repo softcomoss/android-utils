@@ -23,7 +23,7 @@ allprojects {
 - Add the dependency to your module
 ```
 dependencies {
-    implementation 'com.github.softcomlab:android-utils:master-SNAPSHOT'
+    implementation 'com.github.softcomoss:android-utils:master-SNAPSHOT'
 }
 ```
 
