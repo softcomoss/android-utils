@@ -36,4 +36,3 @@ See [CONTRIBUTING.md](https://github.com/softcomoss/android-utils/blob/master/CO
 - Add more utility functions
 - Setup CI to automate testing.
 - Use Github releases for jitpack versioning.
-

@@ -99,4 +99,3 @@ fun Fragment.showDialog(
  */
 inline fun <reified T : Activity> Fragment.createIntent(block: Intent.() -> Unit = {}): Intent =
     requireContext().createIntent<T>(block)
-
