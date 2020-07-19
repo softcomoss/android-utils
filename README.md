@@ -23,7 +23,7 @@ allprojects {
 - Add the dependency to your module
 ```
 dependencies {
-    implementation 'com.github.softcomlab:android-utils:master-SNAPSHOT'
+    implementation 'com.github.softcomoss:android-utils:master-SNAPSHOT'
 }
 ```
 
@@ -36,4 +36,3 @@ See [CONTRIBUTING.md](https://github.com/softcomoss/android-utils/blob/master/CO
 - Add more utility functions
 - Setup CI to automate testing.
 - Use Github releases for jitpack versioning.
-
