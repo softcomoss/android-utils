@@ -16,10 +16,13 @@
 package ng.softcom.android.utils.ui
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -99,4 +102,18 @@ fun Fragment.showDialog(
  */
 inline fun <reified T : Activity> Fragment.createIntent(block: Intent.() -> Unit = {}): Intent =
     requireContext().createIntent<T>(block)
+
+/**
+ * Checks if a fragment has access to the permissions.
+ *
+ * @param permissions the permissions to check for.
+ *
+ * @return whether or not the context has all of the given [permissions].
+ */
+fun Fragment.hasPermissions(vararg permissions: String) = permissions.all {
+    ContextCompat.checkSelfPermission(
+        requireContext(),
+        it
+    ) == PackageManager.PERMISSION_GRANTED
+}
 

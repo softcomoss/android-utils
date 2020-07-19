@@ -15,6 +15,8 @@
  */
 package ng.softcom.android.utils.ui
 
+import android.Manifest
+import android.app.Application
 import android.content.Context
 import android.graphics.Color
 import androidx.test.core.app.ActivityScenario
@@ -23,6 +25,7 @@ import ng.softcom.android.utils.test.TestActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows
 
 @RunWith(RobolectricTestRunner::class)
 class ContextUtilsTest {
@@ -47,5 +50,34 @@ class ContextUtilsTest {
         val expectedColor = Color.WHITE
 
         assert(actualColor == expectedColor)
+    }
+
+    @Test
+    fun hasPermissions_correctResults() {
+        val app: Application = ApplicationProvider.getApplicationContext()
+
+        Shadows.shadowOf(app).grantPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        val actualResult1 = app.hasPermissions(Manifest.permission.CAMERA)
+        val expectedResult1 = true
+
+        val actualResult2 = app.hasPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        val expectedResult2 = false
+
+        val actualResult3 = app.hasPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+        val expectedResult3 = true
+
+        assert(actualResult1 == expectedResult1)
+        assert(actualResult2 == expectedResult2)
+        assert(actualResult3 == expectedResult3)
     }
 }
