@@ -15,6 +15,8 @@
  */
 package ng.softcom.android.utils.ui
 
+import android.Manifest
+import android.app.Application
 import android.content.Context
 import android.graphics.Color
 import androidx.test.core.app.ActivityScenario
@@ -23,6 +25,7 @@ import ng.softcom.android.utils.test.TestActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows
 
 @RunWith(RobolectricTestRunner::class)
 class ContextUtilsTest {
@@ -47,5 +50,75 @@ class ContextUtilsTest {
         val expectedColor = Color.WHITE
 
         assert(actualColor == expectedColor)
+    }
+
+    @Test
+    fun hasPermissions_truePositiveSingle() {
+        val app: Application = ApplicationProvider.getApplicationContext()
+
+        Shadows.shadowOf(app).grantPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        val actualResult = app.hasPermissions(Manifest.permission.CAMERA)
+
+        val expectedResult = true
+
+        assert(actualResult == expectedResult)
+    }
+
+    @Test
+    fun hasPermissions_truePositiveMultiple() {
+        val app: Application = ApplicationProvider.getApplicationContext()
+
+        Shadows.shadowOf(app).grantPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        val actualResult = app.hasPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        val expectedResult = true
+
+        assert(actualResult == expectedResult)
+    }
+
+    @Test
+    fun hasPermissions_falsePositiveSingle() {
+        val app: Application = ApplicationProvider.getApplicationContext()
+
+        Shadows.shadowOf(app).grantPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        val actualResult = app.hasPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
+
+        val expectedResult = false
+
+        assert(actualResult == expectedResult)
+    }
+
+    @Test
+    fun hasPermissions_falsePositiveMultiple() {
+        val app: Application = ApplicationProvider.getApplicationContext()
+
+        Shadows.shadowOf(app).grantPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        val actualResult = app.hasPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+
+        val expectedResult = false
+
+        assert(actualResult == expectedResult)
     }
 }

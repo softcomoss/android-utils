@@ -18,6 +18,7 @@ package ng.softcom.android.utils.ui
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.util.TypedValue
 import android.view.Gravity
@@ -119,3 +120,17 @@ inline fun <reified T : Activity> Context.createIntent(block: Intent.() -> Unit 
  * Backwards compatible [Context.getColor]
  */
 fun Context.getColorCompat(@ColorRes id: Int) = ContextCompat.getColor(this, id)
+
+/**
+ * Checks if context has access to the permissions.
+ *
+ * @param permissions the permissions to check for.
+ *
+ * @return whether or not the context has all of the given [permissions].
+ */
+fun Context.hasPermissions(vararg permissions: String) = permissions.all {
+    ContextCompat.checkSelfPermission(
+        this,
+        it
+    ) == PackageManager.PERMISSION_GRANTED
+}
