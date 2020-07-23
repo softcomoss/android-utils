@@ -49,4 +49,6 @@ object RemoteUtils {
             else -> throwable.message ?: ErrorMessages.UNKNOWN_NETWORK_EXCEPTION
         }
     }
+
+
 }
