@@ -16,8 +16,12 @@
 
 package ng.softcom.android.utils.ui
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import androidx.activity.ComponentActivity
 
 var View.visible: Boolean
     get() = visibility == View.VISIBLE
@@ -41,3 +45,13 @@ fun View.show() {
 fun View.isShowing() = visibility == View.VISIBLE
 
 val <T : EditText> T.stringText get() = text.toString().trim()
+
+
+
+fun View.onClick(action: () -> Unit) {
+    setOnClickListener { action.invoke() }
+}
+
+fun bundle(block: Bundle.() -> Unit = {}): Bundle {
+    return Bundle().apply(block)
+}

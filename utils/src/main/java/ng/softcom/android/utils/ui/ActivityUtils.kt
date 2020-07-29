@@ -15,6 +15,9 @@
  */
 package ng.softcom.android.utils.ui
 
+import android.content.Context
+import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -30,3 +33,10 @@ import androidx.lifecycle.ViewModelProviders
  */
 inline fun <reified T : ViewModel> FragmentActivity.obtainViewModel(viewModelFactory: ViewModelProvider.Factory) =
     ViewModelProviders.of(this, viewModelFactory).get(T::class.java)
+
+inline fun <reified T : ComponentActivity> createIntent(
+    context: Context,
+    block: Intent.() -> Unit
+): Intent {
+    return Intent(context, T::class.java).apply(block)
+}
