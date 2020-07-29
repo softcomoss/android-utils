@@ -18,7 +18,10 @@ package ng.softcom.android.utils.ui
 
 import java.io.File
 
-
+/**
+ * Gets the file size unit
+ * e.g 10.7mb, 2.4kb
+ */
 fun File.getFileSizeInSIUnits(): String {
     val byte = 1024.0
     var unit = ""

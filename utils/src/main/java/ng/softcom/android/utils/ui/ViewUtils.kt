@@ -44,14 +44,22 @@ fun View.show() {
 
 fun View.isShowing() = visibility == View.VISIBLE
 
+
+/**
+ * Get the trimmed value in an edit text
+ */
 val <T : EditText> T.stringText get() = text.toString().trim()
 
-
-
+/**
+ * @param action code to execute when the view is clicked
+ */
 fun View.onClick(action: () -> Unit) {
     setOnClickListener { action.invoke() }
 }
 
+/**
+ * @param block block of code to configure this bundle
+ */
 fun bundle(block: Bundle.() -> Unit = {}): Bundle {
     return Bundle().apply(block)
 }

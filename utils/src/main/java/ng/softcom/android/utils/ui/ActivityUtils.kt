@@ -34,6 +34,9 @@ import androidx.lifecycle.ViewModelProviders
 inline fun <reified T : ViewModel> FragmentActivity.obtainViewModel(viewModelFactory: ViewModelProvider.Factory) =
     ViewModelProviders.of(this, viewModelFactory).get(T::class.java)
 
+/** Create an intent used to navigate to another activity
+ * @param block code to configure the intent
+ */
 inline fun <reified T : ComponentActivity> createIntent(
     context: Context,
     block: Intent.() -> Unit
