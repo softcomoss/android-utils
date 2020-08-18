@@ -10,6 +10,8 @@ dependencies {
     implementation(AndroidXDependencies.appCompat)
     implementation(AndroidXDependencies.coreKtx)
     implementation(AndroidXDependencies.lifecycle)
+    implementation(AndroidXDependencies.navigationFragmentKtx)
+    implementation(AndroidXDependencies.navigationUiKtx)
     kapt(AndroidXDependencies.lifecycleCompiler)
 
     implementation(NetworkDependencies.retrofit)

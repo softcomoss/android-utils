@@ -12,7 +12,7 @@ General utility functions that are used by Android Developers
 
 ### Method 2 - Gradle Dependency
 - Add the jitpack repository to your root `build.gradle`
-```
+```gradle
 allprojects {
     repositories {
         ...
@@ -21,9 +21,9 @@ allprojects {
 }
 ```
 - Add the dependency to your module
-```
+```gradle
 dependencies {
-    implementation 'com.github.softcomoss:android-utils:master-SNAPSHOT'
+    implementation 'com.github.softcomoss:android-utils:0.1.0'
 }
 ```
 
@@ -34,5 +34,4 @@ See [CONTRIBUTING.md](https://github.com/softcomoss/android-utils/blob/master/CO
 ## TODO
 
 - Add more utility functions
-- Setup CI to automate testing.
-- Use Github releases for jitpack versioning.
+- Upload to jCenter.

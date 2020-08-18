@@ -19,16 +19,19 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import ng.softcom.android.utils.R
 
 /**
  * Show a snack bar.
@@ -37,25 +40,43 @@ import com.google.android.material.snackbar.Snackbar
  * @param text the string to display on the snack bar.
  * @param isError whether or not the snack bar is displaying an error.
  * @param duration the snack bar duration type.
+ * @param backgroundColor option to override the background color of the snack bar (defaults to the
+ *                        primary color of the context's theme).
+ * @param textColor option to override the text color of the snack bar (defaults to [Color.WHITE]).
  */
 fun Context.showSnackBar(
     rootView: View,
     text: String,
     isError: Boolean = false,
-    duration: Int = Snackbar.LENGTH_SHORT
+    duration: Int = Snackbar.LENGTH_SHORT,
+    @ColorInt backgroundColor: Int? = null,
+    @ColorInt textColor: Int = Color.WHITE
 ) {
     val snackBar = Snackbar.make(rootView, text, duration)
     val snackBarLayout = snackBar.view as Snackbar.SnackbarLayout
     snackBarLayout.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).run {
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
-        setTextColor(getColorCompat(android.R.color.white))
+        setTextColor(textColor)
     }
 
-    if (isError) {
-        snackBarLayout.setBackgroundColor(Color.RED)
+    snackBarLayout.backgroundTintList = when {
+        isError -> {
+            ColorStateList.valueOf(Color.RED)
+        }
+        backgroundColor != null -> {
+            ColorStateList.valueOf(backgroundColor)
+        }
+        else -> {
+            ColorStateList.valueOf(getPrimaryColor())
+        }
     }
 
     snackBar.show()
+}
+
+private fun Context.getPrimaryColor(): Int {
+    val typedValue = TypedValue()
+    theme.resolveAttribute(R.attr.colorPrimary, typedValue, true)
+    return typedValue.data
 }
 
 /**
