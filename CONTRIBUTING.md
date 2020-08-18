@@ -4,7 +4,7 @@ Contribution is encouraged, to increase the utility coverage and resolve existin
 
 Follow these guidelines to contribute to the library.
 
-- Figure out a new lightweight utility function you think might be usefuful to other developers or a fix for an issue found in an existing utility.
+- Figure out a new lightweight utility function you think might be useful to other developers or a fix for an issue found in an existing utility.
 - Make a new feature branch or fork the repo and checkout into Android Studio.
 - Write code :)
 - As this is a utility library, ensure that the increase to the AAR file is minimal.

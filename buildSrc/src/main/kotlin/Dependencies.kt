@@ -21,12 +21,16 @@ object AndroidXDependencies {
         const val appCompat = "1.1.0"
         const val coreKtx = "1.0.2"
         const val lifecycle = "2.0.0"
+        const val navigation = "2.3.0-alpha05"
     }
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+    const val navigationFragmentKtx =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 object NetworkDependencies {

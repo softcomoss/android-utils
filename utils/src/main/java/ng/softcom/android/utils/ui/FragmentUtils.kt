@@ -18,8 +18,10 @@ package ng.softcom.android.utils.ui
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -46,13 +48,18 @@ inline fun <reified T : ViewModel> Fragment.obtainViewModel(viewModelFactory: Vi
  * @param text the string to display on the snack bar.
  * @param isError whether or not the snack bar is displaying an error.
  * @param duration the snack bar duration type.
+ * @param backgroundColor option to override the background color of the snack bar (defaults to the
+ *                        primary color of the context's theme).
+ * @param textColor option to override the text color of the snack bar (defaults to [Color.WHITE]).
  */
 fun Fragment.showSnackBar(
     rootView: View,
     text: String,
     isError: Boolean = false,
-    duration: Int = Snackbar.LENGTH_SHORT
-) = requireContext().showSnackBar(rootView, text, isError, duration)
+    duration: Int = Snackbar.LENGTH_SHORT,
+    @ColorInt backgroundColor: Int? = null,
+    @ColorInt textColor: Int = Color.WHITE
+) = requireContext().showSnackBar(rootView, text, isError, duration, backgroundColor, textColor)
 
 /**
  * Show a toast in a fragment.
